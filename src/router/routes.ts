@@ -1,17 +1,23 @@
 import { RouteRecordRaw } from 'vue-router'
-import Home from '../views/Home.vue'
+import App from '../App.vue'
+import home from './home'
+import login from './login'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    redirect: '/home'
   },
   {
-    path: '/about',
-    name: 'About',
-    component: () => import( '../views/About.vue' )
+    path: '/home',
+    component: App,
+    children: home
+  },
+  {
+    path: '/login',
+    component: App,
+    children: login
   }
 ]
 
-export default routes
+export default routes 

@@ -1,5 +1,5 @@
 <template>
-  <h1>{{ msg }}</h1>
+  <h1>{{ msg }}6666666666</h1>
   <p>
     Recommended setup:
     <a href="https://code.visualstudio.com/" target="_blank">VSCode</a>
@@ -24,8 +24,9 @@
 
 <script lang="ts">
 import { ref, defineComponent } from 'vue'
+// import instance from '../api/instance'
 
-export default defineComponent({
+export default defineComponent( {
   name: 'HelloWorld',
   props: {
     msg: {
@@ -34,8 +35,10 @@ export default defineComponent({
     }
   },
   setup: () => {
-    const count = ref(0)
+    const count = ref( 0 )
+    // let res = await instance.get( '/666' )
+    // console.log( 'res', res )
     return { count }
   }
-})
+} )
 </script>
