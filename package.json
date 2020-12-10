@@ -7,15 +7,17 @@
   },
   "dependencies": {
     "axios": "^0.21.0",
+    "nprogress": "^0.2.0",
     "vue": "^3.0.2",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
-    "@vue/compiler-sfc": "^3.0.2",
-    "@vue/cli-plugin-vuex": "~4.5.0",
+    "@types/nprogress": "^0.2.0",
     "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-plugin-vuex": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.2",
     "@vuedx/typecheck": "^0.2.4-0",
     "@vuedx/typescript-plugin-vue": "^0.2.4-0",
     "less": "^3.0.4",
