@@ -1,4 +1,13 @@
 import axios from 'axios'
+import { start, done } from 'nprogress'
+
+if ( process.env.NODE_ENV == 'development' ) {
+  process.env.NODE_ENV_URL = 'http://www.baidu.com'
+} else {
+  process.env.NODE_ENV_URL = 'http://www.baidu.com'
+}
+
+console.log( process.env.NODE_ENV_URL )
 
 const instance = axios.create( {
   baseURL: '' || 'https://some-domain.com/api/',
@@ -9,6 +18,7 @@ const instance = axios.create( {
 // 请求拦截器
 instance.interceptors.request.use(
   config => {
+    start()
     return config
   },
   error => {
@@ -19,6 +29,7 @@ instance.interceptors.request.use(
 // 响应拦截器
 instance.interceptors.response.use(
   response => {
+    done()
     return response
   },
   error => {

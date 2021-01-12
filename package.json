@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
+    "dev-b": "vite --mode production",
     "build": "typecheck . && vite build"
   },
   "dependencies": {

@@ -4,17 +4,11 @@
     Recommended setup:
     <a href="https://code.visualstudio.com/" target="_blank">VSCode</a>
     +
-    <a
-      href="https://marketplace.visualstudio.com/items?itemName=octref.vetur"
-      target="_blank"
-      >Vetur</a
-    >
+    <a href="https://marketplace.visualstudio.com/items?itemName=octref.vetur" target="_blank">Vetur</a>
   </p>
   <p>
     Make sure to use workspace version of TypeScript to get improved support via
-    <a href="https://github.com/znck/vue-developer-experience" target="_blank"
-      >@vuedx</a
-    >.
+    <a href="https://github.com/znck/vue-developer-experience" target="_blank">@vuedx</a>.
   </p>
   <button @click="count++">count is: {{ count }}</button>
   <p>
@@ -38,7 +32,9 @@ export default defineComponent( {
     const count = ref( 0 )
     // let res = await instance.get( '/666' )
     // console.log( 'res', res )
-    return { count }
+    return {
+      count
+    }
   }
 } )
 </script>
