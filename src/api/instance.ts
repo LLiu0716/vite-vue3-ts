@@ -2,15 +2,15 @@ import axios from 'axios'
 import { start, done } from 'nprogress'
 
 if ( process.env.NODE_ENV == 'development' ) {
-  process.env.NODE_ENV_URL = 'http://www.baidu.com'
+  process.env.NODE_ENV_URL = 'http://127.0.0.1:3000'
 } else {
-  process.env.NODE_ENV_URL = 'http://www.baidu.com'
+  process.env.NODE_ENV_URL = 'http://127.0.0.1:3000'
 }
 
 console.log( process.env.NODE_ENV_URL )
 
 const instance = axios.create( {
-  baseURL: '' || 'https://some-domain.com/api/',
+  baseURL: '' || process.env.NODE_ENV_URL,
   timeout: 3500,
   method: '' || 'get'
 } )
