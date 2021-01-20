@@ -1,0 +1,46 @@
+<template>
+  <header class="Nheader">
+    <i class="iconfont iconjiantou2" @click="router.back()"></i>
+    <h2 class="title">{{ title }}</h2>
+    <i class="iconfont"></i>
+  </header>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+import { useRouter } from 'vue-router'
+
+export default defineComponent( {
+  name: 'HelloWorld',
+  props: {
+    title: {
+      type: String
+      // required: true
+    }
+  },
+  setup: ( props, context ) => {
+    const router = useRouter()
+    return {
+      router
+    }
+  }
+} )
+</script>
+
+<style lang="less" scoped>
+.Nheader {
+  height: 50px;
+  display: flex;
+  line-height: 50px;
+  align-items: center;
+  .title {
+    flex: 1;
+    text-align: center;
+  }
+  i {
+    width: 50px;
+    height: 100%;
+    text-align: center;
+  }
+}
+</style>

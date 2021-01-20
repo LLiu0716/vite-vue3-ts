@@ -1,12 +1,26 @@
 import request from "../instance"
 import url from "./url"
 
-export const home = async () => {
-  let res: any = await request.get( url.home )
+interface I_data {
+  nickname?: string
+  username: string
+  password: string
+}
+
+/**
+ * 登录函数
+ * @param data 登录信息
+ */
+export const setLogin = async ( data: I_data ) => {
+  let res: any = await request.post( url.Login, data )
   return res
 }
 
-export const phome = async ( data?: any, params?: any ) => {
-  let res: any = await request.post( url.home, data, params )
+/**
+ * 注册函数
+ * @param data 注册信息
+ */
+export const setRegister = async ( data: I_data ) => {
+  let res: any = await request.post( url.Register, data )
   return res
 }

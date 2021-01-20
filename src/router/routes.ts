@@ -1,7 +1,7 @@
 import { RouteRecordRaw } from 'vue-router'
 import App from '../App.vue'
 import home from './home'
-import login from './login'
+import user from './user'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -14,9 +14,14 @@ const routes: Array<RouteRecordRaw> = [
     children: home
   },
   {
-    path: '/login',
+    path: '/user',
     component: App,
-    children: login
+    children: user
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import( '/@/views/login/index.vue' )
   }
 ]
 

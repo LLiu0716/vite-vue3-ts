@@ -3,5 +3,6 @@
  */
 
 export default {
-  home: '/home'
+  Login: '/login',
+  Register: '/register'
 }

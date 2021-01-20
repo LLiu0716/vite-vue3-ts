@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { start, done } from 'nprogress'
+import { Toast } from 'vant'
 
 if ( process.env.NODE_ENV == 'development' ) {
   process.env.NODE_ENV_URL = 'http://127.0.0.1:3000'
@@ -19,6 +20,10 @@ const instance = axios.create( {
 instance.interceptors.request.use(
   config => {
     start()
+    const token = sessionStorage.getItem( 'new_token' )
+    if ( token ) {
+      config.headers.Authorization = token
+    }
     return config
   },
   error => {
@@ -30,9 +35,10 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
   response => {
     done()
-    return response
+    return response.data
   },
   error => {
+    Toast.fail( '错误' )
     return Promise.reject( error )
   }
 )
