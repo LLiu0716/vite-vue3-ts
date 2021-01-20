@@ -8,7 +8,7 @@ const config: UserConfig = {
   https: false,
   ssr: false,
   optimizeDeps: {
-    include: [ 'axios', 'nprogress' ]
+    include: [ 'axios', 'nprogress', 'vant' ]
   },
   alias: {
     '/@/': path.resolve( __dirname, './src' )
