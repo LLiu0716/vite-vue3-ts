@@ -1,5 +1,6 @@
 <template>
   <div class="login">
+    <NnHeader title="个人中心" :show="true" />
     <NnFooter />
   </div>
 </template>
@@ -11,7 +12,6 @@ import { Toast } from 'vant'
 import { setLogin, setRegister } from '../../api/login'
 import { is_res } from '../../methods'
 import { useRouter } from 'vue-router'
-import NnFooter from '../../components/NnFooter.vue'
 
 export default defineComponent( {
   name: 'user',

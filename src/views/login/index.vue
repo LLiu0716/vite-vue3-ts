@@ -141,7 +141,7 @@ export default defineComponent( {
         console.log( 'res', res )
         if ( res ) {
           sessionStorage.setItem( 'new_token', res.token )
-          sessionStorage.setItem( 'new_id', res.id )
+          sessionStorage.setItem( 'new_id', res.user.id )
           Toast.loading( '登录中...' )
           setTimeout( () => {
             router.push( { name: 'home' } )

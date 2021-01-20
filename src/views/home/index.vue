@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <NnHeader title="首 页" :show="true" />
     <NnFooter />
   </div>
 </template>
