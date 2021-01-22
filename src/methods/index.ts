@@ -1,6 +1,8 @@
 import { Toast } from 'vant'
+/** 
+ * 注意 :修改 moment 源代码里的导出方式为默认导出
+ */
 import moment from 'moment'
-// import moment = require( 'moment' );
 
 /**
  * 统一处理异步请求数据的结果判断
@@ -8,7 +10,7 @@ import moment from 'moment'
  */
 export const is_res = ( res: any ) => {
   if ( res.statusCode == 200 ) {
-    Toast.success( res.message )
+    // Toast.success( res.message )
     return res.data
   } else {
     Toast.fail( res.message )

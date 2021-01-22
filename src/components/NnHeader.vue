@@ -47,8 +47,10 @@ export default defineComponent( {
   top: 0;
   line-height: 50px;
   align-items: center;
-  background: #fff;
-  border-bottom: 1px solid #ccc;
+  display: flex;
+  // background: #fff;
+  // border-bottom: 1px solid #ccc;
+  background: #eee;
   z-index: 999;
   .title {
     flex: 1;

@@ -13,6 +13,8 @@ if ( process.env.NODE_ENV == 'production' ) {
 }
 import {
   Button,
+  Dialog,
+  Toast,
   Form,
   Field,
   Cell,
@@ -30,6 +32,8 @@ createApp( App )
   .use( store )
   .use( router )
   .use( Button )
+  .use( Dialog )
+  .use( Toast )
   .use( Field )
   .use( Form )
   .use( Cell )

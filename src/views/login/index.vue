@@ -196,7 +196,7 @@ export default defineComponent( {
   }
   .conten {
     padding: 0 30px;
-    /deep/ .van-field__control {
+    :deep(.van-field__control) {
       font-size: 20px;
       line-height: 26px;
       margin-bottom: 12px;

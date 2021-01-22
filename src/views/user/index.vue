@@ -1,7 +1,7 @@
 <template>
   <div class="user">
     <NnHeader title="个人中心" :show="true" />
-    <div class="username">
+    <div class="username" @click="router.push({ name: 'set' })">
       <div class="l">
         <van-image :src="isUrl(user.head_img)">
           <template v-slot:loading>
@@ -10,14 +10,25 @@
         </van-image>
       </div>
       <div class="r">
-        <div class="t"></div>
+        <div class="t">
+          <i v-if="user.gender == 1" class="iconfont iconxingbienan"></i>
+          <i v-else class="iconfont iconxingbienv"></i>
+          <span>{{ user.nickname }}</span>
+        </div>
         <div class="b">{{ mome(user.create_date) }}</div>
       </div>
-      <div class="l"></div>
+      <div class="rr">
+        <i class="iconfont iconjiantou1"></i>
+      </div>
     </div>
     <div class="content">
       <div class="item" v-for="(v, i) in list" :key="i">
         <van-cell :title="v.name" :value="v.content" is-link :to="v.pash" />
+      </div>
+      <div class="btn">
+        <van-button round size="large" type="primary" block @click="lo_out">
+          <span>退 出</span>
+        </van-button>
       </div>
     </div>
     <NnFooter />
@@ -26,10 +37,10 @@
 
 <script lang="ts">
 import { defineComponent, toRefs, reactive, defineAsyncComponent, onMounted, ref } from 'vue'
-import { Toast } from 'vant'
 import { set_User } from '../../api/user'
 import { is_res, is_url, is_moment } from '../../methods'
 import { useRouter } from 'vue-router'
+import { Dialog } from 'vant'
 import * as moment from 'moment'
 
 export default defineComponent( {
@@ -58,6 +69,17 @@ export default defineComponent( {
         return date = is_moment( date )
       }
     }
+    const lo_out = async () => {
+      try {
+        await Dialog.confirm( {
+          title: '提示',
+          message: '是否退出 ?',
+        } )
+        sessionStorage.removeItem( 'new_token' )
+        sessionStorage.removeItem( 'new_id' )
+        router.push( { name: 'login' } )
+      } catch ( error ) { console.log( error ) }
+    }
     onMounted( async () => {
       let id: string = sessionStorage.getItem( 'new_id' ) || ''
       console.log( '666', id )
@@ -69,8 +91,10 @@ export default defineComponent( {
     } )
     return {
       ...toRefs( data ),
+      router,
       list,
       mome,
+      lo_out,
       isUrl
     }
   }
@@ -83,24 +107,60 @@ export default defineComponent( {
   .username {
     display: flex;
     padding: 12px;
+    align-items: center;
+    height: 100px;
     border-bottom: 2px solid #ccc;
     .l {
-      flex: 1;
+      flex: 2;
       padding: 0 12px;
       :deep(img) {
         border-radius: 50%;
       }
     }
     .r {
-      flex: 2;
+      flex: 5;
+      height: 100%;
       padding: 0 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      .t {
+        font-size: 18px;
+        .iconxingbienan {
+          color: skyblue;
+        }
+        .iconxingbienv {
+          color: pink;
+        }
+        i {
+          margin-right: 8px;
+        }
+      }
+      .b {
+        font-size: 14px;
+      }
+    }
+    .rr {
+      padding-right: 12px;
+      text-align: right;
+      i {
+        font-weight: 700;
+        color: #999;
+      }
     }
   }
   .content {
-    padding: 12px;
+    padding: 0 12px;
     .item {
+      height: 70px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
       border-bottom: 1px solid #ccc;
     }
+  }
+  .btn {
+    margin-top: 20px;
   }
 }
 </style>
