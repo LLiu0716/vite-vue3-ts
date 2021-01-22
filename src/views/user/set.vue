@@ -1,0 +1,16 @@
+<template>
+  <div class="set">
+    <NnHeader title="设 置" />
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent( {
+  name: 'user_set',
+} )
+</script>
+
+<style lang="less" scoped>
+</style>

@@ -11,7 +11,16 @@ console.log( process.env.NODE_ENV )
 if ( process.env.NODE_ENV == 'production' ) {
   console.log = () => { }
 }
-import { Button, Form, Field } from 'vant'
+import {
+  Button,
+  Form,
+  Field,
+  Cell,
+  CellGroup,
+  Lazyload,
+  Image as VanImage,
+  Loading
+} from 'vant'
 
 import NnHeader from './components/NnHeader.vue'
 import NnFooter from './components/NnFooter.vue'
@@ -23,6 +32,11 @@ createApp( App )
   .use( Button )
   .use( Field )
   .use( Form )
+  .use( Cell )
+  .use( CellGroup )
+  .use( Lazyload )
+  .use( VanImage )
+  .use( Loading )
   .component( 'NnHeader', NnHeader )
   .component( 'NnFooter', NnFooter )
   // .use( Vant )

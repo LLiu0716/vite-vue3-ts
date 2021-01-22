@@ -1,11 +1,13 @@
 <template>
-  <header class="Nheader">
-    <i class="iconfont" v-if="show"></i>
-    <i class="iconfont iconjiantou2" @click="router.back()" v-else></i>
-    <h2 class="title">{{ title }}</h2>
-    <i class="iconfont go" v-if="id"></i>
-    <i class="iconfont" v-else @click="router.push('/login')">登录</i>
-  </header>
+  <div class="box">
+    <header class="Nheader">
+      <i v-if="show"></i>
+      <i class="iconfont iconjiantou2" @click="router.back()" v-else></i>
+      <h2 class="title">{{ title }}</h2>
+      <i class="go" v-if="id"></i>
+      <i v-else @click="router.push('/login')">登录</i>
+    </header>
+  </div>
 </template>
 
 <script lang="ts">
@@ -35,11 +37,19 @@ export default defineComponent( {
 </script>
 
 <style lang="less" scoped>
-.Nheader {
+.box {
   height: 50px;
-  display: flex;
+}
+.Nheader {
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  top: 0;
   line-height: 50px;
   align-items: center;
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+  z-index: 999;
   .title {
     flex: 1;
     text-align: center;

@@ -7,9 +7,24 @@ const user: Array<RouteRecordRaw> = [
     component: () => import( '/@/views/user/index.vue' )
   },
   {
-    path: 'register',
-    name: 'register',
-    component: () => import( '/@/views/user/register.vue' )
+    path: 'set',
+    name: 'set',
+    component: () => import( '/@/views/user/set.vue' )
+  },
+  {
+    path: 'enshrine',
+    name: 'enshrine',
+    component: () => import( '/@/views/user/enshrine.vue' )
+  },
+  {
+    path: 'live',
+    name: 'live',
+    component: () => import( '/@/views/user/live.vue' )
+  },
+  {
+    path: 'follow',
+    name: 'follow',
+    component: () => import( '/@/views/user/follow.vue' )
   }
 ]
 

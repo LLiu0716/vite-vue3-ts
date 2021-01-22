@@ -104,7 +104,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, toRefs, onActivated, reactive, toRef } from 'vue'
+import { defineComponent, toRefs, reactive, toRef } from 'vue'
 import { Toast } from 'vant'
 // import { Toast, Field, Form } from 'vant'
 import { setLogin, setRegister } from '../../api/login'
