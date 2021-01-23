@@ -50,12 +50,14 @@ export default defineComponent( {
     const data = reactive( {
       user: store.state.user
     } )
+
     const list = [
       { name: '我的关注', pash: '/user/live', content: '关注的回复' },
       { name: '我的跟帖', pash: '/user/follow', content: '跟帖/回复' },
       { name: '我的收藏', pash: '/user/enshrine', content: '文档/视频' },
       { name: '设置', pash: '/user/set', content: '' }
     ]
+
     const isUrl = ( url: string ) => {
       if ( url ) {
         return url = is_url( url )
@@ -63,12 +65,14 @@ export default defineComponent( {
         return url = 'https://img.yzcdn.cn/vant/apple-2.jpg'
       }
     }
+
     const mome = ( date: any ) => {
       if ( date ) {
         // return moment( date ).format( 'YYYY-MM-DD' )
         return date = is_moment( date )
       }
     }
+
     const lo_out = async () => {
       try {
         await Dialog.confirm( {
@@ -77,9 +81,11 @@ export default defineComponent( {
         } )
         sessionStorage.removeItem( 'new_token' )
         sessionStorage.removeItem( 'new_id' )
+        sessionStorage.removeItem( 'IS_USER' )
         router.push( { name: 'login' } )
       } catch ( error ) { console.log( error ) }
     }
+
     // onMounted( async () => {
     //   let id: string = sessionStorage.getItem( 'new_id' ) || ''
     //   console.log( '666', id )
