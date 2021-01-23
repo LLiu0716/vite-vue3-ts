@@ -37,18 +37,18 @@
 
 <script lang="ts">
 import { defineComponent, toRefs, reactive, defineAsyncComponent, onMounted, ref } from 'vue'
-import { set_User } from '../../api/user'
 import { is_res, is_url, is_moment } from '../../methods'
 import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
 import { Dialog } from 'vant'
-import * as moment from 'moment'
 
 export default defineComponent( {
   name: 'user',
   setup ( props, context ) {
     const router = useRouter()
+    const store = useStore()
     const data = reactive( {
-      user: {}
+      user: store.state.user
     } )
     const list = [
       { name: '我的关注', pash: '/user/live', content: '关注的回复' },
@@ -80,15 +80,15 @@ export default defineComponent( {
         router.push( { name: 'login' } )
       } catch ( error ) { console.log( error ) }
     }
-    onMounted( async () => {
-      let id: string = sessionStorage.getItem( 'new_id' ) || ''
-      console.log( '666', id )
-      if ( id ) {
-        let res = await set_User( id )
-        res = is_res( res )
-        data.user = res
-      }
-    } )
+    // onMounted( async () => {
+    //   let id: string = sessionStorage.getItem( 'new_id' ) || ''
+    //   console.log( '666', id )
+    //   if ( id ) {
+    //     let res = await set_User( id )
+    //     res = is_res( res )
+    //     data.user = res
+    //   }
+    // } )
     return {
       ...toRefs( data ),
       router,

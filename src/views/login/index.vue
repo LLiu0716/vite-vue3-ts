@@ -108,8 +108,10 @@ import { defineComponent, toRefs, reactive, toRef } from 'vue'
 import { Toast } from 'vant'
 // import { Toast, Field, Form } from 'vant'
 import { setLogin, setRegister } from '../../api/login'
+import { set_User } from '../../api/user'
 import { is_res } from '../../methods'
 import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
 
 export default defineComponent( {
   name: 'Home',
@@ -119,6 +121,7 @@ export default defineComponent( {
   // },
   setup ( props, context ) {
     const router = useRouter()
+    const store = useStore()
     const data = reactive( {
       show: true,
       username: '',
@@ -144,6 +147,7 @@ export default defineComponent( {
           sessionStorage.setItem( 'new_token', res.token )
           sessionStorage.setItem( 'new_id', res.user.id )
           Toast.loading( '登录中...' )
+          goUser( res.user.id )
           setTimeout( () => {
             router.push( { name: 'home' } )
           }, 500 )
@@ -162,6 +166,16 @@ export default defineComponent( {
         console.log( 'res', res )
         if ( res ) {
           data.show = true
+        }
+      } catch ( error ) { console.log( 'err', error ) }
+    }
+
+    const goUser = async ( id: string ) => {
+      try {
+        let res = await set_User( id )
+        res = is_res( res )
+        if ( res ) {
+          store.commit( 'IS_USER', res )
         }
       } catch ( error ) { console.log( 'err', error ) }
     }

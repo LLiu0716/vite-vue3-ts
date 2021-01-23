@@ -6,6 +6,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { set_User } from '../../api/user'
 
 export default defineComponent( {
   name: 'user_set',
