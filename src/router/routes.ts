@@ -21,7 +21,10 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/user',
     component: App,
-    children: user
+    children: user,
+    meta: {
+      click: true
+    }
   }
 ]
 

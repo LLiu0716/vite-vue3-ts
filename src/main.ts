@@ -24,7 +24,9 @@ import {
   Loading,
   Uploader,
   RadioGroup,
-  Radio
+  Radio,
+  List,
+  PullRefresh
 } from 'vant'
 
 import NnHeader from './components/NnHeader.vue'
@@ -47,6 +49,8 @@ createApp( App )
   .use( Uploader )
   .use( RadioGroup )
   .use( Radio )
+  .use( List )
+  .use( PullRefresh )
   .component( 'NnHeader', NnHeader )
   .component( 'NnFooter', NnFooter )
   // .use( Vant )

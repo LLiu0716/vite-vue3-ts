@@ -101,9 +101,6 @@ export default defineComponent( {
             case '昵称':
               v.value = res.nickname
               break
-            case '密码':
-              v.value = res.password
-              break
             case '性别':
               v.value = res.gender == 1 ? '男' : '女'
               break
@@ -122,6 +119,7 @@ export default defineComponent( {
       let id = sessionStorage.getItem( 'new_id' ) || ''
       try {
         let res = await set_user_update( id, data )
+        Toast.success( res.message )
         res = is_res( res )
         get_user()
       } catch ( error ) { console.log( error ) }
