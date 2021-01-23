@@ -126,6 +126,7 @@ export default defineComponent( {
       nickname: '',
       newpass: ''
     } )
+
     const validator = ( val: string ) => {
       if ( val === data.password ) return true
       else return false
