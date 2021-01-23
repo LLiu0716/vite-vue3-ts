@@ -37,7 +37,7 @@
 
 <script lang="ts">
 import { defineComponent, toRefs, reactive, defineAsyncComponent, onMounted, ref } from 'vue'
-import { is_res, is_url, is_moment } from '../../methods'
+import { is_res, is_moment } from '../../methods'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { Dialog } from 'vant'
@@ -60,7 +60,7 @@ export default defineComponent( {
 
     const isUrl = ( url: string ) => {
       if ( url ) {
-        return url = is_url( url )
+        return url
       } else {
         return url = 'https://img.yzcdn.cn/vant/apple-2.jpg'
       }

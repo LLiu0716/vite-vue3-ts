@@ -109,7 +109,7 @@ import { Toast } from 'vant'
 // import { Toast, Field, Form } from 'vant'
 import { setLogin, setRegister } from '../../api/login'
 import { set_User } from '../../api/user'
-import { is_res } from '../../methods'
+import { is_res, is_url } from '../../methods'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 
@@ -175,6 +175,7 @@ export default defineComponent( {
         let res = await set_User( id )
         res = is_res( res )
         if ( res ) {
+          res.head_img = is_url( res.head_img )
           store.commit( 'IS_USER', res )
         }
       } catch ( error ) { console.log( 'err', error ) }

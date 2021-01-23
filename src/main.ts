@@ -21,7 +21,10 @@ import {
   CellGroup,
   Lazyload,
   Image as VanImage,
-  Loading
+  Loading,
+  Uploader,
+  RadioGroup,
+  Radio
 } from 'vant'
 
 import NnHeader from './components/NnHeader.vue'
@@ -41,6 +44,9 @@ createApp( App )
   .use( Lazyload )
   .use( VanImage )
   .use( Loading )
+  .use( Uploader )
+  .use( RadioGroup )
+  .use( Radio )
   .component( 'NnHeader', NnHeader )
   .component( 'NnFooter', NnFooter )
   // .use( Vant )
