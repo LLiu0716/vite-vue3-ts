@@ -52,7 +52,7 @@ export default defineComponent( {
     } )
 
     const list = [
-      { name: '我的关注', pash: '/user/live', content: '关注的回复' },
+      { name: '我的关注', pash: '/user/live', content: '关注的人' },
       { name: '我的跟帖', pash: '/user/follow', content: '跟帖/回复' },
       { name: '我的收藏', pash: '/user/enshrine', content: '文档/视频' },
       { name: '设置', pash: '/user/set', content: '' }
