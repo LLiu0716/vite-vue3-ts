@@ -2,9 +2,9 @@ import request from "../../instance"
 import url from "./url"
 
 /**
- * 获取评论列表
+ * 获取收藏文章列表
  */
-export const set_follows = async () => {
-  let res: any = await request.get( url.user_comments )
+export const set_user_star = async ( params?: any ) => {
+  let res: any = await request.get( url.user_star, { params } )
   return res
 }

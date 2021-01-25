@@ -3,5 +3,5 @@
  */
 
 export default {
-  user_comments: '/user_comments'
+  user_star: '/user_star'
 }

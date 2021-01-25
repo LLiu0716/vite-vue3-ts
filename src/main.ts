@@ -31,6 +31,7 @@ import {
 
 import NnHeader from './components/NnHeader.vue'
 import NnFooter from './components/NnFooter.vue'
+import NnList from './components/NnItem.vue'
 // import * as Vant from 'vant'
 
 createApp( App )
@@ -53,5 +54,6 @@ createApp( App )
   .use( PullRefresh )
   .component( 'NnHeader', NnHeader )
   .component( 'NnFooter', NnFooter )
+  .component( 'NnList', NnList )
   // .use( Vant )
   .mount( '#app' )
