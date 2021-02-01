@@ -1,4 +1,4 @@
-import { createApp } from 'vue'
+import { createApp, defineAsyncComponent } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
@@ -26,12 +26,12 @@ import {
   RadioGroup,
   Radio,
   List,
-  PullRefresh
+  PullRefresh,
+  Skeleton
 } from 'vant'
 
 import NnHeader from './components/NnHeader.vue'
 import NnFooter from './components/NnFooter.vue'
-import NnList from './components/NnItem.vue'
 // import * as Vant from 'vant'
 
 createApp( App )
@@ -52,8 +52,20 @@ createApp( App )
   .use( Radio )
   .use( List )
   .use( PullRefresh )
+  .use( Skeleton )
   .component( 'NnHeader', NnHeader )
   .component( 'NnFooter', NnFooter )
-  .component( 'NnList', NnList )
+  // 无配置项异步组件
+  .component( 'NnRefresh',
+    defineAsyncComponent( () => import( './components/NnRefresh.vue' ) ) )
+  // 有配置项异步组件
+  .component( 'NnList',
+    defineAsyncComponent( {
+      loader: () => import( './components/NnItem.vue' ),
+      delay: 200,
+      timeout: 3000,
+      errorComponent: () => import( "./components/NnItem.vue" ),
+      loadingComponent: () => import( "./components/NnItem.vue" )
+    } ) )
   // .use( Vant )
   .mount( '#app' )

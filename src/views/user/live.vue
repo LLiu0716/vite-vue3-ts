@@ -1,32 +1,34 @@
 <template>
   <div class="live">
     <NnHeader title="我的关注" />
-    <div class="item" v-for="(v, i) in list" :key="i">
-      <div class="l">
-        <img :src="isUrl(v.head_img)" />
-      </div>
-      <div class="c">
-        <div class="t">
-          <i v-if="v.gender == 1" class="iconfont iconxingbienan"></i>
-          <i v-else class="iconfont iconxingbienv"></i>
-          <span>{{ v.nickname }}</span>
+    <van-skeleton :row="list.length" :loading="!list.length">
+      <div class="item" v-for="(v, i) in list" :key="i">
+        <div class="l">
+          <img :src="isUrl(v.head_img)" />
         </div>
-        <div class="b">{{ mome(v.create_date) }}</div>
+        <div class="c">
+          <div class="t">
+            <i v-if="v.gender == 1" class="iconfont iconxingbienan"></i>
+            <i v-else class="iconfont iconxingbienv"></i>
+            <span>{{ v.nickname }}</span>
+          </div>
+          <div class="b">{{ mome(v.create_date) }}</div>
+        </div>
+        <div class="r">
+          <van-button
+            block
+            round
+            size="small"
+            plain
+            type="primary"
+            @click="unfollow($event, v.id)"
+          >
+            取消关注
+          </van-button>
+        </div>
       </div>
-      <div class="r">
-        <van-button
-          block
-          round
-          size="small"
-          plain
-          type="primary"
-          @click="unfollow($event, v.id)"
-        >
-          取消关注
-        </van-button>
-      </div>
-    </div>
-    <div class="footer">没有更多了</div>
+      <div class="footer">没有更多了</div>
+    </van-skeleton>
   </div>
 </template>
 
@@ -59,7 +61,7 @@ export default defineComponent( {
       if ( url ) {
         return url = is_url( url )
       } else {
-        return url = 'https://img.yzcdn.cn/vant/apple-2.jpg'
+        return url = 'https://img.yzcdn.cn/vant/apple-1.jpg'
       }
     }
 

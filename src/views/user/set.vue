@@ -3,7 +3,7 @@
     <NnHeader title="设 置" />
     <div class="content">
       <div class="img">
-        <img :src="store.state.user.head_img" />
+        <img :src="isUrl(store.state.user.head_img)" />
         <van-uploader :after-read="afterRead" />
       </div>
       <div class="item" v-for="v in list" :key="v.title">
@@ -190,9 +190,21 @@ export default defineComponent( {
       }
     }
 
+    /**
+     * @name 判断是否有图片,如果没有图片就替换为默认图片
+     */
+    const isUrl = ( url: string ) => {
+      if ( url ) {
+        return url
+      } else {
+        return url = 'https://img.yzcdn.cn/vant/apple-2.jpg'
+      }
+    }
+
     return {
       ...toRefs( data ),
       store,
+      isUrl,
       afterRead,
       click_item,
       modification

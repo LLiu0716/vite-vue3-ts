@@ -1,47 +1,49 @@
 <template>
   <div class="nn_list">
-    <!-- video 视频 -->
-    <div class="video" v-if="item.type == 2">
-      <div class="title">{{ item.title }}</div>
-      <div class="video-img">
-        <div class="img">
-          <img :src="isUrl(item.cover[0].url)" />
-        </div>
-        <div class="ico">
-          <i class="iconfont iconshipin"></i>
-        </div>
-      </div>
-      <div class="bottom">
-        <span>{{ item.user.nickname }}</span>
-        <span>{{ item.comments.length }} 跟帖</span>
-      </div>
-    </div>
-    <!-- text 单图文本 -->
-    <div class="text" v-else-if="item.cover.length < 3">
-      <div class="centent">
+    <van-skeleton :row="10" :loading="!item">
+      <!-- video 视频 -->
+      <div class="video" v-if="item.type == 2">
         <div class="title">{{ item.title }}</div>
+        <div class="video-img">
+          <div class="img">
+            <img :src="isUrl(item.cover[0].url)" />
+          </div>
+          <div class="ico">
+            <i class="iconfont iconshipin"></i>
+          </div>
+        </div>
         <div class="bottom">
           <span>{{ item.user.nickname }}</span>
           <span>{{ item.comments.length }} 跟帖</span>
         </div>
       </div>
-      <div class="text-imgs">
-        <img :src="isUrl(item.cover[0].url)" />
+      <!-- text 单图文本 -->
+      <div class="text" v-else-if="item.cover.length < 3">
+        <div class="centent">
+          <div class="title">{{ item.title }}</div>
+          <div class="bottom">
+            <span>{{ item.user.nickname }}</span>
+            <span>{{ item.comments.length }} 跟帖</span>
+          </div>
+        </div>
+        <div class="text-imgs">
+          <img :src="isUrl(item.cover[0].url)" />
+        </div>
       </div>
-    </div>
-    <!-- imgs 多张图 -->
-    <div class="imgs" v-else>
-      <div class="title">{{ item.title }}</div>
-      <div class="images">
-        <template v-for="(v, i) in item.cover" :key="i">
-          <img v-if="i < 3" :src="isUrl(v.url)" />
-        </template>
+      <!-- imgs 多张图 -->
+      <div class="imgs" v-else>
+        <div class="title">{{ item.title }}</div>
+        <div class="images">
+          <template v-for="(v, i) in item.cover" :key="i">
+            <img v-if="i < 3" :src="isUrl(v.url)" />
+          </template>
+        </div>
+        <div class="bottom">
+          <span>{{ item.user.nickname }}</span>
+          <span>{{ item.comments.length }} 跟帖</span>
+        </div>
       </div>
-      <div class="bottom">
-        <span>{{ item.user.nickname }}</span>
-        <span>{{ item.comments.length }} 跟帖</span>
-      </div>
-    </div>
+    </van-skeleton>
   </div>
 </template>
 
