@@ -1,6 +1,6 @@
 <template>
   <router-view />
-  <NnGoTop />
+  <NnGoTop></NnGoTop>
 </template>
 
 <script lang="ts">
