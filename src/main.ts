@@ -31,6 +31,7 @@ import {
   Tabs,
   Sticky,
   Empty,
+  Search,
   Skeleton
 } from 'vant'
 
@@ -60,6 +61,7 @@ createApp( App )
   .use( Tabs )
   .use( Sticky )
   .use( Empty )
+  .use( Search )
   .use( Skeleton )
   .component( 'NnHeader', NnHeader )
   .component( 'NnFooter', NnFooter )
