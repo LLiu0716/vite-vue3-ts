@@ -15,18 +15,7 @@ export default defineComponent( {
   name: 'tablist',
   setup () {
     const data = reactive( {
-      new_tab: [],
-      oul_tab: []
     } )
-
-    watch(
-      () => data.new_tab,
-      ( v ) => {
-        console.log( v )
-        localStorage.setItem( 'new_tab', JSON.stringify( data.new_tab ) )
-        localStorage.setItem( 'oul_tab', JSON.stringify( data.oul_tab ) )
-      }
-    )
 
     const route = useRoute()
 

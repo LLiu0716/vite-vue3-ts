@@ -53,10 +53,8 @@
         </template>
         <template v-if="recommend.length">
           <div class="box">
-            <div class="title one" v-for="(v, i) in recommend" :key="i">
-              <p @click="look(v.title)">
-                {{ v.title }}
-              </p>
+            <div v-for="(v, i) in recommend" :key="i">
+              <p class="title one" @click="look(v.title)">{{ v.title }}</p>
             </div>
           </div>
         </template>
