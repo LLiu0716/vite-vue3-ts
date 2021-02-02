@@ -4,5 +4,8 @@
 
 export default {
   post: '/post',
-  tab: '/category'
+  tab: '/category',
+  post_search_recommend: '/post_search_recommend',
+  post_search: '/post_search'
+
 }

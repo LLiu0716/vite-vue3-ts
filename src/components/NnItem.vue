@@ -1,5 +1,5 @@
 <template>
-  <div class="nn_list">
+  <div class="nn_list" @click="onClick(item.id)">
     <van-skeleton :row="10" :loading="!item">
       <!-- video 视频 -->
       <div class="video" v-if="item.type == 2">
@@ -61,8 +61,14 @@ export default defineComponent( {
     const isUrl = ( url: string ) => {
       return is_url( url )
     }
+
+    const onClick = ( id: number ) => {
+      text.emit( 'onClick', id )
+    }
+
     return {
-      isUrl
+      isUrl,
+      onClick
     }
   }
 } )

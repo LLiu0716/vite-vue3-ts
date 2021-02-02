@@ -17,6 +17,11 @@ const home: Array<RouteRecordRaw> = [
     name: 'seek',
     component: () => import( '/@/views/home/seek.vue' )
   },
+  {
+    path: 'item',
+    name: 'item',
+    component: () => import( '/@/views/home/item.vue' )
+  },
 ]
 
 export default home

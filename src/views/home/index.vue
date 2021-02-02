@@ -37,7 +37,13 @@
               offset="30"
               :immediate-check="false"
             >
-              <NnList v-for="(v, i) in list" :key="i" :item="v" api="首页" />
+              <NnList
+                v-for="(v, i) in list"
+                :key="i"
+                :item="v"
+                api="首页"
+                @onClick="onClick"
+              />
             </van-list>
           </van-pull-refresh>
         </van-tab>
@@ -142,9 +148,18 @@ export default defineComponent( {
       onLoad()
     }
 
+    const onClick = ( id: number ) => {
+      console.log( 'id', id )
+      router.push( {
+        path: '/home/item',
+        query: { id }
+      } )
+    }
+
     return {
       ...toRefs( data ),
       onRefresh,
+      onClick,
       onLoad,
       router
     }
