@@ -110,7 +110,7 @@ import { Toast } from 'vant'
 import { setLogin, setRegister } from '../../api/login'
 import { set_User } from '../../api/user'
 import { is_res, is_url } from '../../methods'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 
 export default defineComponent( {
@@ -121,6 +121,7 @@ export default defineComponent( {
   // },
   setup ( props, context ) {
     const router = useRouter()
+    const route = useRoute()
     const store = useStore()
     const data = reactive( {
       show: true,
@@ -149,7 +150,8 @@ export default defineComponent( {
           Toast.loading( '登录中...' )
           goUser( res.user.id )
           setTimeout( () => {
-            router.push( { name: 'home' } )
+            if ( route.params.back ) router.back()
+            else router.push( { name: 'home' } )
           }, 500 )
         }
       } catch ( error ) { console.log( 'err', error ) }
