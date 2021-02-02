@@ -15,15 +15,24 @@ export default defineComponent( {
       scroll_Top: 0
     } )
 
+    /** 
+     * 生命周期钩子
+     * 用于创建事件
+     */
     onMounted( () => {
       window.addEventListener( 'scroll', scrollTop )
     } )
 
+    /** 
+     * 生命周期钩子
+     * 用于销毁事件
+     */
     onBeforeUnmount( () => {
       console.log( '777' )
       window.removeEventListener( 'scroll', scrollTop )
     } )
 
+    // v3 里的监听
     watch(
       () => data.scroll_Top,
       ( v ) => {
@@ -35,12 +44,14 @@ export default defineComponent( {
       }
     )
 
+    /** 赋值函数 */
     const scrollTop = () => {
       data.scroll_Top = window.pageYOffset ||
         document.documentElement.scrollTop ||
         document.body.scrollTop
     }
 
+    /** 点击事件函数 */
     const goTop = () => {
       let timer = setInterval( () => {
         let osTop = document.documentElement.scrollTop || document.body.scrollTop;
