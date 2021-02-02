@@ -18,8 +18,8 @@
         <i class="iconfont iconjiantou1"></i>
       </div>
     </van-sticky>
-    <van-tabs v-model:active="active" sticky>
-      <van-skeleton :row="tab.length" :loading="!tab.length">
+    <van-skeleton :row="tab.length" :loading="!tab.length">
+      <van-tabs v-model:active="active" sticky>
         <van-tab v-for="v in tab" :key="v.id" :title="v.name">
           <van-pull-refresh
             v-model="refreshing"
@@ -37,14 +37,12 @@
               offset="30"
               :immediate-check="false"
             >
-              <van-skeleton :row="list.length" :loading="!list.length">
-                <NnList v-for="(v, i) in list" :key="i" :item="v" api="首页" />
-              </van-skeleton>
+              <NnList v-for="(v, i) in list" :key="i" :item="v" api="首页" />
             </van-list>
           </van-pull-refresh>
         </van-tab>
-      </van-skeleton>
-    </van-tabs>
+      </van-tabs>
+    </van-skeleton>
     <NnFooter />
   </div>
 </template>
@@ -80,6 +78,7 @@ export default defineComponent( {
     watch(
       () => data.active,
       ( v ) => {
+        console.log( 'v', v )
         data.pageIndex = 1
         data.list = []
         data.finished = false
@@ -90,13 +89,20 @@ export default defineComponent( {
     )
 
     const get_tab = async () => {
-      try {
-        let res = await home_tab( {} )
-        res = is_res( res )
-        data.tab = res
-        let id: number = res[ data.active ].id
-        get_list( id )
-      } catch ( error ) { console.log( error ) }
+      if ( localStorage.getItem( 'oul_tab' ) ) {
+        data.tab = JSON.parse( localStorage.getItem( 'oul_tab' ) as any )
+      } else {
+        try {
+          let res = await home_tab( {} )
+          res = is_res( res )
+          data.tab = res
+        } catch ( error ) { console.log( error ) }
+      }
+      console.log( 'data.tab', data.tab )
+      let obj: any = data.tab[ data.active ]
+      let id: number = obj.id
+      console.log( 'id', id )
+      get_list( id )
     }
 
     const get_list = async ( id: number ) => {
