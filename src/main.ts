@@ -27,6 +27,10 @@ import {
   Radio,
   List,
   PullRefresh,
+  Tab,
+  Tabs,
+  Sticky,
+  Empty,
   Skeleton
 } from 'vant'
 
@@ -52,6 +56,10 @@ createApp( App )
   .use( Radio )
   .use( List )
   .use( PullRefresh )
+  .use( Tab )
+  .use( Tabs )
+  .use( Sticky )
+  .use( Empty )
   .use( Skeleton )
   .component( 'NnHeader', NnHeader )
   .component( 'NnFooter', NnFooter )

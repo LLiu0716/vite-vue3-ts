@@ -1,8 +1,6 @@
 <template>
-  <div>
-    <div class="page-up" @click="goTop" v-show="goTopShow">
-      <i class="iconfont iconjiantou2"></i>
-    </div>
+  <div class="page-up" @click="goTop" v-show="goTopShow">
+    <i class="iconfont iconjiantou2"></i>
   </div>
 </template>
 

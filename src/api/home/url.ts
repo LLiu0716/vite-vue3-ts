@@ -3,5 +3,6 @@
  */
 
 export default {
-  home: '/home'
+  post: '/post',
+  tab: '/category'
 }

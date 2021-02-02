@@ -14,7 +14,8 @@
         </div>
         <div class="bottom">
           <span>{{ item.user.nickname }}</span>
-          <span>{{ item.comments.length }} 跟帖</span>
+          <span v-if="api">{{ item.comment_length }} 跟帖</span>
+          <span v-else>{{ item.comments.length }} 跟帖</span>
         </div>
       </div>
       <!-- text 单图文本 -->
@@ -23,7 +24,8 @@
           <div class="title">{{ item.title }}</div>
           <div class="bottom">
             <span>{{ item.user.nickname }}</span>
-            <span>{{ item.comments.length }} 跟帖</span>
+            <span v-if="api">{{ item.comment_length }} 跟帖</span>
+            <span v-else>{{ item.comments.length }} 跟帖</span>
           </div>
         </div>
         <div class="text-imgs">
@@ -40,7 +42,8 @@
         </div>
         <div class="bottom">
           <span>{{ item.user.nickname }}</span>
-          <span>{{ item.comments.length }} 跟帖</span>
+          <span v-if="api">{{ item.comment_length }} 跟帖</span>
+          <span v-else>{{ item.comments.length }} 跟帖</span>
         </div>
       </div>
     </van-skeleton>
@@ -53,7 +56,7 @@ import { is_url } from '../methods'
 
 export default defineComponent( {
   name: 'nn_list',
-  props: { item: Object },
+  props: { item: Object, api: String },
   setup ( props, text ) {
     const isUrl = ( url: string ) => {
       return is_url( url )

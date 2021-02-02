@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { start, done } from 'nprogress'
 import { Toast } from 'vant'
+import router from '../router'
 
 if ( process.env.NODE_ENV == 'development' ) {
   process.env.NODE_ENV_URL = 'http://127.0.0.1:3000'
@@ -38,7 +39,27 @@ instance.interceptors.response.use(
     return response.data
   },
   error => {
-    Toast.fail( '错误' )
+    console.log( 'err', error.response )
+    const code = error.response.status
+    switch ( code ) {
+      case 401:
+        Toast.fail( '还没登录 , 请先登录' )
+        router.push( {
+          name: 'login',
+          params: {
+            back: 'true'
+          }
+        } )
+        break
+      case 404:
+        Toast.fail( '网络错误' )
+        router.push( '/error' )
+        break
+      default:
+        Toast.fail( error.response.statusText )
+        router.push( '/error' )
+        break
+    }
     return Promise.reject( error )
   }
 )

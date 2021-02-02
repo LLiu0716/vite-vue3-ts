@@ -30,7 +30,7 @@ import { is_res } from '../methods'
 
 export default defineComponent( {
   name: 'nn_list',
-  props: [ 'api' ],
+  props: { api: String },
   setup ( props, text ) {
     const data = reactive( {
       list: [],

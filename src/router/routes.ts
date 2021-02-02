@@ -1,5 +1,5 @@
 import { RouteRecordRaw } from 'vue-router'
-import App from '../App.vue'
+import index from '../views/index.vue'
 import home from './home'
 import user from './user'
 
@@ -14,13 +14,18 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import( '/@/views/login/index.vue' )
   },
   {
+    path: '/error',
+    name: 'error',
+    component: () => import( '/@/views/error.vue' )
+  },
+  {
     path: '/home',
-    component: App,
+    component: index,
     children: home
   },
   {
     path: '/user',
-    component: App,
+    component: index,
     children: user,
     meta: {
       click: true

@@ -4,8 +4,10 @@
       <i v-if="show"></i>
       <i class="iconfont iconjiantou2" @click="router.back()" v-else></i>
       <h2 class="title">{{ title }}</h2>
-      <i class="go" v-if="id"></i>
-      <i v-else @click="router.push('/login')">登录</i>
+      <i v-if="show">
+        <i class="go" v-if="id"></i>
+        <i v-else @click="router.push('/login')">登录</i>
+      </i>
     </header>
   </div>
 </template>
