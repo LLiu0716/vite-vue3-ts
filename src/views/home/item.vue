@@ -21,12 +21,10 @@
     </div>
     <van-skeleton :row="20" :loading="!item.title">
       <div class="content">
-        <h2 class="title">
-          {{ item.title }}
-        </h2>
+        <h2 class="title">{{ item.title }}</h2>
         <p class="nickname">
           <span>{{ item.user.nickname }}</span>
-          <span>{{ moment(item.create_date) }}</span>
+          <span>{{ is_moment(item.create_date) }}</span>
         </p>
         <video
           :src="item.content"
@@ -124,14 +122,6 @@ export default defineComponent( {
       } catch ( error ) { console.log( error ) }
     }
 
-    const moment = ( data: any ) => {
-      return is_moment( data )
-    }
-
-    const url = ( data: any ) => {
-      return is_url( data )
-    }
-
     const live = async ( done: boolean ) => {
       const id: number = data.item.user.id
       data.disabled = true
@@ -162,9 +152,9 @@ export default defineComponent( {
       ...toRefs( data ),
       route,
       router,
+      is_moment,
       live,
-      moment,
-      url,
+      is_url,
       is_live
     }
   }

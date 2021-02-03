@@ -15,7 +15,7 @@
           <i v-else class="iconfont iconxingbienv"></i>
           <span>{{ user.nickname }}</span>
         </div>
-        <div class="b">{{ mome(user.create_date) }}</div>
+        <div class="b">{{ is_moment(user.create_date) }}</div>
       </div>
       <div class="rr">
         <i class="iconfont iconjiantou1"></i>
@@ -37,7 +37,7 @@
 
 <script lang="ts">
 import { defineComponent, toRefs, reactive, defineAsyncComponent, onMounted, ref } from 'vue'
-import { is_res, is_moment } from '../../methods'
+import { is_moment } from '../../methods'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { Dialog } from 'vant'
@@ -66,13 +66,6 @@ export default defineComponent( {
       }
     }
 
-    const mome = ( date: any ) => {
-      if ( date ) {
-        // return moment( date ).format( 'YYYY-MM-DD' )
-        return date = is_moment( date )
-      }
-    }
-
     const lo_out = async () => {
       try {
         await Dialog.confirm( {
@@ -86,20 +79,11 @@ export default defineComponent( {
       } catch ( error ) { console.log( error ) }
     }
 
-    // onMounted( async () => {
-    //   let id: string = sessionStorage.getItem( 'new_id' ) || ''
-    //   console.log( '666', id )
-    //   if ( id ) {
-    //     let res = await set_User( id )
-    //     res = is_res( res )
-    //     data.user = res
-    //   }
-    // } )
     return {
       ...toRefs( data ),
       router,
       list,
-      mome,
+      is_moment,
       lo_out,
       isUrl
     }

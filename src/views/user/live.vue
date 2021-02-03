@@ -12,7 +12,7 @@
             <i v-else class="iconfont iconxingbienv"></i>
             <span>{{ v.nickname }}</span>
           </div>
-          <div class="b">{{ mome(v.create_date) }}</div>
+          <div class="b">{{ is_moment(v.create_date) }}</div>
         </div>
         <div class="r">
           <van-button
@@ -65,12 +65,6 @@ export default defineComponent( {
       }
     }
 
-    const mome = ( date: any ) => {
-      if ( date ) {
-        return date = is_moment( date )
-      }
-    }
-
     const unfollow = async ( e: any, id: number ) => {
       try {
         let res: any
@@ -99,7 +93,7 @@ export default defineComponent( {
     return {
       ...toRefs( data ),
       isUrl,
-      mome,
+      is_moment,
       unfollow
     }
   }

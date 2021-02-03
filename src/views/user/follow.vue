@@ -4,7 +4,9 @@
     <NnRefresh api="我的跟帖" @getList="getList">
       <template v-slot:default>
         <div class="item" v-for="(v, i) in list" :key="i">
-          <div class="time">{{ mome(v.create_date) }}</div>
+          <div class="time">
+            {{ is_moment(v.create_date, "YYYY-MM-DD kk:mm") }}
+          </div>
           <div class="look" v-if="v.parent">
             <div class="parent-name">回复 : {{ v.parent.user.nickname }}</div>
             <div class="parent-content">{{ v.parent.content }}</div>
@@ -35,13 +37,9 @@ export default defineComponent( {
       data.list = res
     }
 
-    const mome = ( data: any ) => {
-      return is_moment( data, 'YYYY-MM-DD kk:mm' )
-    }
-
     return {
       ...toRefs( data ),
-      mome,
+      is_moment,
       getList
     }
   }
