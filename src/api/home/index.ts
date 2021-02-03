@@ -20,3 +20,13 @@ export const home_search = async ( keyword: string ) => {
   let res: any = await request.get( url.post_search, { params: { keyword } } )
   return res
 }
+
+export const home_item = async ( id: any ) => {
+  let res: any = await request.get( `${ url.post }/${ id }` )
+  return res
+}
+
+export const home_like = async ( id: number ) => {
+  let res: any = await request.get( `${ url.post_like }/${ id }` )
+  return res
+}
