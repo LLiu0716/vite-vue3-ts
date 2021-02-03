@@ -27,7 +27,7 @@
           <span>{{ is_moment(item.create_date) }}</span>
         </p>
         <video
-          :src="item.content"
+          :src="video(item.content)"
           v-if="item.type == 2"
           controls
           muted
@@ -144,6 +144,11 @@ export default defineComponent( {
       } catch ( error ) { console.log( error ) }
     }
 
+    const video = ( res: any ) => {
+      const reg = /<\/?.+?\/?>/g
+      return res.replace( reg, '' )
+    }
+
     onMounted( () => {
       get_item()
     } )
@@ -155,6 +160,7 @@ export default defineComponent( {
       is_moment,
       live,
       is_url,
+      video,
       is_live
     }
   }
@@ -208,6 +214,10 @@ export default defineComponent( {
         font-size: 14px;
         margin-right: 12px;
       }
+    }
+    video {
+      width: 100%;
+      margin: 12px 0;
     }
     .text {
       font-size: 16px;
