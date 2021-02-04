@@ -1,7 +1,7 @@
 <template>
   <!-- 回复 -->
   <div class="reply">
-    <NnReply v-if="parent.parent" :parent="parent.parent" :count="count - 1" />
+    <reply v-if="parent.parent" :parent="parent.parent" :count="count - 1" />
     <div class="call" :class="{ i: !parent.parent }">
       <div class="top">
         <div class="left">

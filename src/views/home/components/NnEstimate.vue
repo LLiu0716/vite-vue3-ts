@@ -19,14 +19,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, defineAsyncComponent } from 'vue'
 import { is_url, is_moment } from '../../../methods'
 
 export default defineComponent( {
   name: 'estimate',
-  // components: {
-  //   NnReply: defineAsyncComponent( () => import( './NnReply.vue' ) )
-  // },
+  components: {
+    NnReply: defineAsyncComponent( () => import( './NnReply.vue' ) )
+  },
   props: { item: Object },
   setup () {
     const isUrl = ( url: string ) => {
@@ -34,7 +34,7 @@ export default defineComponent( {
       else return url = 'https://img.yzcdn.cn/vant/apple-1.jpg'
     }
 
-    // const num = ( numr: number, item: any ) => {
+    // const num = ( count: any, item: any ) => {
     const num = ( count: number, item: any ): number => {
       if ( item.parent ) {
         return num( count + 1, item.parent )

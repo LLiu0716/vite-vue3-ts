@@ -66,8 +66,8 @@ createApp( App )
   .component( 'NnHeader', NnHeader )
   .component( 'NnFooter', NnFooter )
   // 无配置项异步组件
-  .component( 'NnReply',
-    defineAsyncComponent( () => import( './views/home/components/NnReply.vue' ) ) )
+  // .component( 'NnReply',
+  //   defineAsyncComponent( () => import( './views/home/components/NnReply.vue' ) ) )
   .component( 'NnRefresh',
     defineAsyncComponent( () => import( './components/NnRefresh.vue' ) ) )
   // 有配置项异步组件

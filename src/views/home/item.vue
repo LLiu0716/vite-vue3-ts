@@ -49,7 +49,9 @@
       </div>
       <div class="c_estimate">
         <NnEstimate v-for="(item, i) in estimate" :key="i" :item="item" />
-        <div class="click" @click="get_estimate">{{ "点击获取评论信息" }}</div>
+        <div class="click" @click="get_estimate">
+          {{ length ? "点击获取更多评论" : "没有更多信息了" }}
+        </div>
       </div>
     </van-skeleton>
   </div>
@@ -118,12 +120,13 @@ export default defineComponent( {
         res = is_res( res )
         console.log( 'res', res )
         data.item = res
-        get_estimate( id )
+        get_estimate()
       } catch ( error ) { console.log( error ) }
     }
 
-    const get_estimate = async ( id: any ) => {
-      data.pageIndex += data.pageIndex
+    const get_estimate = async () => {
+      const id: any = route.query.id
+      data.pageIndex = data.pageIndex + 1
       try {
         if ( data.length ) {
           let res = await home_comments( id, {
