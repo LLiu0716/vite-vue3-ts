@@ -10,6 +10,7 @@ const router = createRouter( {
 } )
 
 router.beforeEach( ( to, form, next ) => {
+  console.log( 'form', form )
   const token = sessionStorage.getItem( 'new_token' )
   start()
   if ( to.meta.click ) {

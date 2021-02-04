@@ -47,25 +47,36 @@
           </i>
         </div>
       </div>
+      <div class="c_estimate">
+        <NnEstimate v-for="(item, i) in estimate" :key="i" :item="item" />
+        <div class="click" @click="get_estimate">{{ "点击获取评论信息" }}</div>
+      </div>
     </van-skeleton>
   </div>
 </template>
 
 <script lang="ts">
 import { Toast, Dialog } from 'vant'
-import { defineComponent, reactive, toRefs, onMounted, watch } from 'vue'
+import { defineComponent, reactive, toRefs, onMounted, watch, defineAsyncComponent } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { home_item, home_like } from '../../api/home'
+import { home_item, home_like, home_comments } from '../../api/home'
 import { set_user_unfollow, set_user_follows } from '../../api/user/live'
 import { is_res, is_moment, is_url } from '../../methods'
 
 export default defineComponent( {
   name: 'tablist',
+  components: {
+    NnEstimate: defineAsyncComponent( () => import( './components/NnEstimate.vue' ) )
+  },
   setup () {
     const data = reactive( {
       item: {} as any,
+      estimate: [] as any,
       disabled: false,
-      click: true
+      click: true,
+      length: true,
+      pageSize: 10,
+      pageIndex: 1
     } )
 
     watch(
@@ -101,11 +112,31 @@ export default defineComponent( {
 
     const get_item = async () => {
       const id = route.query.id
+      data.pageIndex = 0
       try {
         let res = await home_item( id )
         res = is_res( res )
         console.log( 'res', res )
         data.item = res
+        get_estimate( id )
+      } catch ( error ) { console.log( error ) }
+    }
+
+    const get_estimate = async ( id: any ) => {
+      data.pageIndex += data.pageIndex
+      try {
+        if ( data.length ) {
+          let res = await home_comments( id, {
+            pageSize: data.pageSize,
+            pageIndex: data.pageIndex
+          } )
+          res = is_res( res )
+          console.log( 'res', res )
+          data.estimate = [ ...data.estimate, ...res ]
+          if ( res.length != data.pageSize ) {
+            data.length = false
+          }
+        }
       } catch ( error ) { console.log( error ) }
     }
 
@@ -155,6 +186,7 @@ export default defineComponent( {
 
     return {
       ...toRefs( data ),
+      get_estimate,
       route,
       router,
       is_moment,
@@ -260,6 +292,15 @@ export default defineComponent( {
         color: #ff0000;
         border: 1px solid #ff0000;
       }
+    }
+  }
+  .c_estimate {
+    .click {
+      text-align: center;
+      height: 30px;
+      line-height: 30px;
+      font-size: 16px;
+      color: #666;
     }
   }
 }

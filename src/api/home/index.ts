@@ -30,3 +30,8 @@ export const home_like = async ( id: number ) => {
   let res: any = await request.get( `${ url.post_like }/${ id }` )
   return res
 }
+
+export const home_comments = async ( id: number, params?: any ) => {
+  let res: any = await request.get( `${ url.post_comment }/${ id }`, { params } )
+  return res
+}
