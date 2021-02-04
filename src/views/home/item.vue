@@ -48,7 +48,12 @@
         </div>
       </div>
       <div class="c_estimate">
-        <NnEstimate v-for="(item, i) in estimate" :key="i" :item="item" />
+        <NnEstimate
+          v-for="(item, i) in estimate"
+          :key="i"
+          :item="item"
+          @onClick="onClick"
+        />
         <div class="click" @click="get_estimate">
           {{ length ? "点击获取更多评论" : "没有更多信息了" }}
         </div>
@@ -178,6 +183,10 @@ export default defineComponent( {
       } catch ( error ) { console.log( error ) }
     }
 
+    const onClick = async ( item: any ) => {
+      console.log( item.id, item.user.nickname )
+    }
+
     const video = ( res: any ) => {
       const reg = /<\/?.+?\/?>/g
       return res.replace( reg, '' )
@@ -196,7 +205,8 @@ export default defineComponent( {
       live,
       is_url,
       video,
-      is_live
+      is_live,
+      onClick
     }
   }
 } )

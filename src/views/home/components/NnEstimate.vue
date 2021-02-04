@@ -10,9 +10,14 @@
           <div class="name">{{ item.user.nickname }}</div>
           <div class="time">{{ is_moment(item.create_date) }}</div>
         </div>
-        <div class="right">回复</div>
+        <div class="right" @click="get_lock">回复</div>
       </div>
-      <NnReply v-if="item.parent" :parent="item.parent" :count="num(0, item)" />
+      <NnReply
+        v-if="item.parent"
+        :parent="item.parent"
+        :count="num(0, item)"
+        @onClick="get_lock"
+      />
       <div class="text">{{ item.content }}</div>
     </div>
   </van-skeleton>
@@ -28,7 +33,7 @@ export default defineComponent( {
     NnReply: defineAsyncComponent( () => import( './NnReply.vue' ) )
   },
   props: { item: Object },
-  setup () {
+  setup ( props, text ) {
     const isUrl = ( url: string ) => {
       if ( url ) return url = is_url( url )
       else return url = 'https://img.yzcdn.cn/vant/apple-1.jpg'
@@ -43,10 +48,15 @@ export default defineComponent( {
       }
     }
 
+    const get_lock = () => {
+      text.emit( 'onClick', props.item )
+    }
+
     return {
       isUrl,
       is_moment,
-      num
+      num,
+      get_lock
     }
   }
 } )

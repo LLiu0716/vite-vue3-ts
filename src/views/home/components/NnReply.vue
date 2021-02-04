@@ -1,8 +1,13 @@
 <template>
   <!-- 回复 -->
   <div class="reply">
-    <reply v-if="parent.parent" :parent="parent.parent" :count="count - 1" />
-    <div class="call" :class="{ i: !parent.parent }">
+    <reply
+      v-if="parent.parent"
+      :parent="parent.parent"
+      :count="count - 1"
+      @onClick="get_lock"
+    />
+    <div :class="{ call: true, i: !parent.parent }">
       <div class="top">
         <div class="left">
           <div class="name">
@@ -13,7 +18,7 @@
         <div class="center">
           <div class="time">{{ is_moment(parent.create_date) }}</div>
         </div>
-        <div class="right">回复</div>
+        <div class="right" @click="get_lock">回复</div>
       </div>
       <div class="text">{{ parent.content }}</div>
     </div>
@@ -27,9 +32,15 @@ import { is_moment } from '../../../methods'
 export default defineComponent( {
   name: 'reply',
   props: { parent: Object, count: Number },
-  setup () {
+  setup ( props, text ) {
+
+    const get_lock = () => {
+      text.emit( 'onClick', props.parent )
+    }
+
     return {
-      is_moment
+      is_moment,
+      get_lock
     }
   }
 } )
