@@ -185,6 +185,7 @@ export default defineComponent( {
 
     const onClick = async ( item: any ) => {
       console.log( item.id, item.user.nickname )
+      // 回复ID和对方的昵称都拿到了 , 回复栏就不继续了 , 如果要继续 , 在这拿数据然后赋值就可以了
     }
 
     const video = ( res: any ) => {
