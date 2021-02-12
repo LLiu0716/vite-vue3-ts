@@ -3,7 +3,7 @@ const path = require( 'path' )
 
 const config: UserConfig = {
   plugins: [],
-  port: 8888,
+  port: 8889,
   open: true,
   https: false,
   ssr: false,
