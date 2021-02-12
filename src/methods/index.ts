@@ -42,6 +42,7 @@ export const is_moment = ( data: any, format: string = 'YYYY-MM-DD' ) => {
 
 class moment {
   constructor ( props: any ) {
+    console.log( 'props', props )
     this.dateFmt( props )
   }
   static = {
@@ -55,22 +56,25 @@ class moment {
   // 格式时间
   dateFmt ( data: any ) {
     const date = new Date( data )
-    this.static.YY = date.getFullYear().toString().padStart( 2, '0' )
-    this.static.MM = ( date.getMonth() + 1 ).toString().padStart( 2, '0' )
-    this.static.DD = date.getDate().toString().padStart( 2, '0' )
-    this.static.kk = date.getHours().toString().padStart( 2, '0' )
-    this.static.mm = date.getMinutes().toString().padStart( 2, '0' )
-    this.static.ss = date.getSeconds().toString().padStart( 2, '0' )
+    this.static = {
+      YY: date.getFullYear().toString().padStart( 2, '0' ),
+      MM: ( date.getMonth() + 1 ).toString().padStart( 2, '0' ),
+      DD: date.getDate().toString().padStart( 2, '0' ),
+      kk: date.getHours().toString().padStart( 2, '0' ),
+      mm: date.getMinutes().toString().padStart( 2, '0' ),
+      ss: date.getSeconds().toString().padStart( 2, '0' )
+    }
   }
 
   format ( val: string ) {
+    const { YY, MM, DD, kk, mm, ss } = this.static
     switch ( val ) {
       // 当前项目只用到了默认格式和这种格式 
       // 需要更多格式 , 自己设置就好了
       case 'YYYY-MM-DD kk:mm':
-        return `${ this.static.YY }-${ this.static.MM }-${ this.static.DD } ${ this.static.kk }:${ this.static.mm }`
+        return `${ YY }-${ MM }-${ DD } ${ kk }:${ mm }`
       default:
-        return `${ this.static.YY }-${ this.static.MM }-${ this.static.DD }`
+        return `${ YY }-${ MM }-${ DD }`
     }
   }
 }
