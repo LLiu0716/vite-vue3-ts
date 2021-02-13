@@ -66,8 +66,8 @@
 <script lang="ts">
 import { defineComponent, reactive, toRefs, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { home_recommend, home_search } from '../../api/home'
-import { is_res } from '../../methods'
+import { home_recommend, home_search } from '/@/api/home'
+import { is_res } from '/@/methods'
 
 export default defineComponent( {
   name: 'home',

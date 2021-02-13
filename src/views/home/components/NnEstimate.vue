@@ -25,7 +25,7 @@
 
 <script lang="ts">
 import { defineComponent, defineAsyncComponent } from 'vue'
-import { is_url, is_moment } from '../../../methods'
+import { is_url, is_moment } from '/@/methods'
 
 export default defineComponent( {
   name: 'estimate',

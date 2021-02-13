@@ -104,12 +104,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, toRefs, reactive, toRef } from 'vue'
+import { defineComponent, toRefs, reactive } from 'vue'
 import { Toast } from 'vant'
 // import { Toast, Field, Form } from 'vant'
-import { setLogin, setRegister } from '../../api/login'
-import { set_User } from '../../api/user'
-import { is_res, is_url } from '../../methods'
+import { setLogin, setRegister } from '/@/api/login'
+import { set_User } from '/@/api/user'
+import { is_res, is_url } from '/@/methods'
 import { useRouter, useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 

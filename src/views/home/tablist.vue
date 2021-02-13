@@ -22,8 +22,8 @@
 import { Toast } from 'vant'
 import { defineComponent, reactive, toRefs, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
-import { home_tab } from '../../api/home'
-import { is_res } from '../../methods'
+import { home_tab } from '/@/api/home'
+import { is_res } from '/@/methods'
 
 export default defineComponent( {
   name: 'tablist',

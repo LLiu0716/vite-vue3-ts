@@ -37,7 +37,7 @@
 
 <script lang="ts">
 import { defineComponent, toRefs, reactive, defineAsyncComponent, onMounted, ref } from 'vue'
-import { is_moment } from '../../methods'
+import { is_moment } from '/@/methods'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { Dialog } from 'vant'

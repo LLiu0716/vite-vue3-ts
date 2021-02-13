@@ -34,8 +34,8 @@
 
 <script lang="ts">
 import { defineComponent, reactive, toRefs, onMounted } from 'vue'
-import { set_follows, set_user_unfollow, set_user_follows } from '../../api/user/live'
-import { is_res, is_url, is_moment } from '../../methods'
+import { set_follows, set_user_unfollow, set_user_follows } from '/@/api/user/live'
+import { is_res, is_url, is_moment } from '/@/methods'
 import { Dialog, Toast } from 'vant'
 
 export default defineComponent( {

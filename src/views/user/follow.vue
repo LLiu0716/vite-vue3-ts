@@ -24,7 +24,7 @@
 
 <script lang="ts">
 import { defineComponent, reactive, toRefs, ref } from 'vue'
-import { is_moment } from '../../methods'
+import { is_moment } from '/@/methods'
 
 export default defineComponent( {
   name: 'user_follow',

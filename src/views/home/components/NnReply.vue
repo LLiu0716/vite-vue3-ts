@@ -27,7 +27,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { is_moment } from '../../../methods'
+import { is_moment } from '/@/methods'
 
 export default defineComponent( {
   name: 'reply',

@@ -63,9 +63,9 @@
 <script lang="ts">
 import { defineComponent, reactive, toRefs, ref } from 'vue'
 import { useStore } from 'vuex'
-import { set_User, set_upload, set_user_update } from '../../api/user'
+import { set_User, set_upload, set_user_update } from '/@/api/user'
 import { Toast } from 'vant'
-import { is_res, is_url } from '../../methods'
+import { is_res, is_url } from '/@/methods'
 
 export default defineComponent( {
   name: 'user_set',

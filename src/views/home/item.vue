@@ -66,9 +66,9 @@
 import { Toast, Dialog } from 'vant'
 import { defineComponent, reactive, toRefs, onMounted, watch, defineAsyncComponent } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { home_item, home_like, home_comments } from '../../api/home'
-import { set_user_unfollow, set_user_follows } from '../../api/user/live'
-import { is_res, is_moment, is_url } from '../../methods'
+import { home_item, home_like, home_comments } from '/@/api/home'
+import { set_user_unfollow, set_user_follows } from '/@/api/user/live'
+import { is_res, is_moment, is_url } from '/@/methods'
 
 export default defineComponent( {
   name: 'tablist',
