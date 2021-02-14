@@ -1,7 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import routes from './routes'
 import { start, done } from 'nprogress'
-import 'nprogress/nprogress.css'
 import { Toast } from 'vant'
 
 const router = createRouter( {

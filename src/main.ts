@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import '/@/style/index.css'
 import '/@/style/iconfont.css'
+import 'nprogress/nprogress.css'
 import 'vant/lib/index.css'
 import 'lib-flexible'
 
